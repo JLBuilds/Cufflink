@@ -59,7 +59,8 @@ export async function structuredCall<S extends z.ZodType>(opts: {
       const res = await client().messages.parse({
         model: model(),
         max_tokens: opts.maxTokens ?? 8000,
-        system: opts.system,
+        // Cached: the system prompt is the same on every call for a given profile.
+        system: [{ type: "text", text: opts.system, cache_control: { type: "ephemeral" } }],
         messages: [{ role: "user", content }],
         output_config: { format: zodOutputFormat(opts.schema), effort: opts.effort ?? "medium" },
       });

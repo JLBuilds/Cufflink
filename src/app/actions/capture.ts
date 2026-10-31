@@ -81,18 +81,24 @@ export async function extractAction(formData: FormData): Promise<ExtractResult> 
     }
   }
 
+  const files = formData.getAll("files").filter((f): f is File => f instanceof File && f.size > 0);
   try {
     if (url) {
-      inputType = "link";
-      const product = await fetchProduct(url);
-      sourceUrl = product.url;
-      pageText = product.pageText;
-      warning = product.warning;
-      if (!product.imageUrl) return { ok: false, error: "Couldn't find a product image on that page. Screenshot the product page instead." };
-      images.push(await normalizeImage((await fetchImage(product.imageUrl)).buffer));
+      try {
+        const product = await fetchProduct(url);
+        if (!product.imageUrl) throw new Error("Couldn't find a product image on that page. Screenshot the product page instead.");
+        images.push(await normalizeImage((await fetchImage(product.imageUrl)).buffer));
+        inputType = "link";
+        sourceUrl = product.url;
+        pageText = product.pageText;
+        warning = product.warning;
+      } catch (err) {
+        // Shops often block server fetches; screenshots attached alongside still work.
+        if (!files.length) throw err;
+        warning = "Couldn't read the link, so this is judged from your screenshots.";
+      }
     }
-    for (const f of formData.getAll("files")) {
-      if (!(f instanceof File) || f.size === 0) continue;
+    for (const f of files) {
       const buffer = Buffer.from(await f.arrayBuffer());
       images.push(CLAUDE_IMAGE_TYPES.has(f.type) && f.size < 4_500_000 ? { buffer, mimeType: f.type } : await normalizeImage(buffer));
     }

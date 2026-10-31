@@ -74,7 +74,8 @@ export async function judge(opts: {
   const { candidate, evaluation: ev, owned, config } = opts;
   const confirmed = owned.filter((o) => o.confirmed_by_user && o.status === "owned");
   const confirmedIds = new Set(confirmed.map((o) => o.id));
-  const top: Outfit[] = ev.unlock.outfits.slice(0, 6);
+  // The verdict page shows three outfits; naming more only adds writing time.
+  const top: Outfit[] = ev.unlock.outfits.slice(0, 3);
   const outfitKeys = new Set(top.map((o) => o.key));
   const name = (id: string) => confirmed.find((o) => o.id === id)?.name ?? (id === candidate.id ? candidate.name : id);
 
@@ -106,6 +107,10 @@ Rules for every word:
       o.jewellery_id ? ` | jewellery: ${name(o.jewellery_id)}` : ""
     } | signals: ${o.feminising.join(", ") || "none"}`;
 
+  // The wardrobe is the same on every check: send it first so it can be cached.
+  const ownedText = `OWNED (confirmed):
+${confirmed.map(itemLine).join("\n")}`;
+
   const text = `CANDIDATE (id ${candidate.id}): ${JSON.stringify({ ...candidate, images: undefined, restrictions: undefined })}
 
 VERDICT: ${VERDICT_LABEL[ev.verdict]}
@@ -122,8 +127,7 @@ ${ev.unlock.goesWith.slice(0, 10).map((g) => `${g.id} × ${g.count} — ${name(g
 CANDIDATE OUTFITS:
 ${top.map(describeOutfit).join("\n") || "none"}
 
-OWNED (confirmed):
-${confirmed.map(itemLine).join("\n")}${opts.note ? `\n\nOWNER'S NOTE (verbatim):\n${opts.note}` : ""}${feedbackBlock(opts.feedback)}`;
+${opts.note ? `\n\nOWNER'S NOTE (verbatim):\n${opts.note}` : ""}${feedbackBlock(opts.feedback)}`;
 
   const validate = (j: Judgement): string | null => {
     const badItems = j.pairings.map((p) => p.item_id).filter((id) => !confirmedIds.has(id));
@@ -135,12 +139,18 @@ ${confirmed.map(itemLine).join("\n")}${opts.note ? `\n\nOWNER'S NOTE (verbatim):
     return null;
   };
 
+  const started = Date.now();
   try {
     const judgement = await structuredCall({
       schema: JudgementSchema,
       system,
-      content: [{ type: "text", text }],
+      content: [
+        { type: "text", text: ownedText, cache_control: { type: "ephemeral" } },
+        { type: "text", text },
+      ],
       maxTokens: 8000,
+      // The verdict is already decided; this step only writes the words.
+      effort: "low",
       validate,
     });
     // Belt and braces: strip any id fragments that leak into prose.
@@ -150,6 +160,7 @@ ${confirmed.map(itemLine).join("\n")}${opts.note ? `\n\nOWNER'S NOTE (verbatim):
     judgement.reasons = judgement.reasons.map((r) => ({ ...r, text: clean(r.text) }));
     judgement.pairings = judgement.pairings.map((p) => ({ ...p, note: clean(p.note) }));
     judgement.outfits = judgement.outfits.map((o) => ({ ...o, name: clean(o.name), styling_note: clean(o.styling_note) }));
+    console.log(`[judge] ${Date.now() - started}ms`);
     return { judgement, grounded: true };
   } catch (err) {
     console.error("[judge] falling back to deterministic text:", err);

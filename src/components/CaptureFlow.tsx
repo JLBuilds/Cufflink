@@ -154,7 +154,7 @@ export function CaptureFlow({ mode, items = [] }: { mode: Mode; items?: ItemOpti
           {busy === "reading" ? "Reading fabric, cut and colour" : mode === "check" ? "Judging it against your rules and wardrobe" : "Adding it and working out how to wear it"}
         </p>
         <p className="text-muted text-sm mt-2">
-          {busy === "reading" ? "About 15 seconds." : "Checking your rules, counting outfits and writing your advice. About 20 seconds."}
+          {busy === "reading" ? "About 15 seconds." : "Checking your rules, counting outfits and writing your advice. About 20–30 seconds."}
         </p>
       </div>
     );
