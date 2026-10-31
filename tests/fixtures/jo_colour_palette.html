@@ -1,0 +1,310 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.wrap { padding: 1.5rem 0 2rem; }
+.section { margin-bottom: 2rem; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--color-text-tertiary); margin-bottom: 14px; padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+.swatch-card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 0.5px solid rgba(0,0,0,0.08);
+}
+.swatch-colour {
+  height: 80px;
+  width: 100%;
+}
+.swatch-info {
+  padding: 7px 9px;
+  background: var(--color-background-primary);
+}
+.swatch-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.swatch-desc {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  line-height: 1.3;
+}
+.swatch-tag {
+  display: inline-block;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 99px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.tag-core {
+  background: #f0ece6;
+  color: #7a5c3e;
+}
+.tag-spring {
+  background: #e8f0e4;
+  color: #3a6632;
+}
+.tag-occasion {
+  background: #e8eef5;
+  color: #2d4e70;
+}
+.rule-note {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding: 10px 14px;
+  background: var(--color-background-secondary);
+  border-radius: 8px;
+  border: 0.5px solid var(--color-border-tertiary);
+  margin-top: 10px;
+}
+</style>
+
+<div class="wrap">
+
+<div class="section">
+  <div class="section-label">Your core palette — 10 warm earthy tones</div>
+  <div class="swatch-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#6B6B3A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Olive green</div>
+        <div class="swatch-desc">Deep, muted</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#C4A882;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Sand / camel</div>
+        <div class="swatch-desc">Warm neutral</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#5C3D2E;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Chocolate brown</div>
+        <div class="swatch-desc">Rich dark</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#B85C38;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Terracotta / rust</div>
+        <div class="swatch-desc">Warm earthy red</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#2D5A3D;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Forest green</div>
+        <div class="swatch-desc">Deep, rich</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#8A9E7E;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Sage green</div>
+        <div class="swatch-desc">Soft, muted</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#4A4A4A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Charcoal</div>
+        <div class="swatch-desc">Warm dark grey</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#1C1C1C;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Near black</div>
+        <div class="swatch-desc">Soft black</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#4A6478;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Steel navy</div>
+        <div class="swatch-desc">Warm blue-grey</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#1E2D4A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep navy</div>
+        <div class="swatch-desc">Rich dark blue</div>
+        <span class="swatch-tag tag-core">Core</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Spring 2026 additions — work with your palette</div>
+  <div class="swatch-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#7D9E7A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Sage green</div>
+        <div class="swatch-desc">2026 new navy. Slots straight in.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#B84A2E;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Lava falls</div>
+        <div class="swatch-desc">Warm tomato red. Earthy, not loud.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#A0522D;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Burnt sienna</div>
+        <div class="swatch-desc">Deep terracotta. Your cowl top zone.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#6B7645;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Shale green</div>
+        <div class="swatch-desc">Earthy khaki. Sits in olive zone.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#2E7A6B;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Alexandrite teal</div>
+        <div class="swatch-desc">Jewel blue-green. One piece only.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#D4702A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muskmelon</div>
+        <div class="swatch-desc">Warm orange. Bag or scarf only.</div>
+        <span class="swatch-tag tag-spring">Spring 26</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Occasion pieces — outside palette but confirmed working</div>
+  <div class="swatch-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#E8174A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Hot pink</div>
+        <div class="swatch-desc">When tanned only. Halter dress.</div>
+        <span class="swatch-tag tag-occasion">Occasion</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#C0392B;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Brick red</div>
+        <div class="swatch-desc">Confirmed on you. Ribbed tee.</div>
+        <span class="swatch-tag tag-occasion">Confirmed</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#F5F0E8;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cream / ecru</div>
+        <div class="swatch-desc">Warm white. Works when tanned.</div>
+        <span class="swatch-tag tag-occasion">Core neutral</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Avoid — outside your palette</div>
+  <div class="swatch-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#E040FB;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Electric fuchsia</div>
+        <div class="swatch-desc">Cool-toned. Fights your skin.</div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#1565C0;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cobalt blue</div>
+        <div class="swatch-desc">Cool primary. Not your tone.</div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#B39DDB;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Burnished lilac</div>
+        <div class="swatch-desc">Cool purple. Drains your tone.</div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-colour" style="background:#FFF176;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Pale banana</div>
+        <div class="swatch-desc">Cool pastel. Too sweet.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="rule-note">
+    The rule: if it reads cool, pale or sweet — it's not yours. Your palette is warm, rich and earthy. Every piece should feel grounded, not pastel.
+  </div>
+</div>
+
+</div>

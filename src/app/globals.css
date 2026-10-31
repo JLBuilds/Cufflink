@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Warm paper ground, cognac accent, olive for "you own", gold hairlines
+   (spec §12). Tokens flip with the system theme. */
+:root {
+  --paper: #f4efe5;
+  --card: #fbf8f2;
+  --ink: #2a241f;
+  --muted: #7a6e62;
+  --line: #e2d8c7;
+  --gold: #b08d4a;
+  --cognac: #93522a;
+  --olive: #5d6937;
+  --brick: #9d3c23;
+  --amber: #9c6c1c;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161311;
+    --card: #1f1b17;
+    --ink: #eee6d9;
+    --muted: #a49786;
+    --line: #382f27;
+    --gold: #c9a65e;
+    --cognac: #d08b56;
+    --olive: #a5b075;
+    --brick: #df7b5d;
+    --amber: #d9a650;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-cognac: var(--cognac);
+  --color-olive: var(--olive);
+  --color-brick: var(--brick);
+  --color-amber: var(--amber);
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Label style: small caps-ish, tracked — the precise sans for data. */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hairline {
+  border-color: var(--gold);
+  opacity: 0.55;
+}
+
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+}
+
+select {
+  appearance: none;
+}

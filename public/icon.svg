@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#2a241f"/>
+  <g fill="none" stroke-width="30">
+    <circle cx="206" cy="256" r="96" stroke="#c9a65e"/>
+    <circle cx="306" cy="256" r="96" stroke="#c9a65e"/>
+    <!-- over/under at the two crossings: the link -->
+    <path d="M 222.7 161.5 A 96 96 0 0 1 284.6 200.9" stroke="#2a241f" stroke-width="50"/>
+    <path d="M 222.7 161.5 A 96 96 0 0 1 284.6 200.9" stroke="#c9a65e"/>
+    <path d="M 289.3 350.5 A 96 96 0 0 1 227.4 311.1" stroke="#2a241f" stroke-width="50"/>
+    <path d="M 289.3 350.5 A 96 96 0 0 1 227.4 311.1" stroke="#c9a65e"/>
+  </g>
+</svg>
